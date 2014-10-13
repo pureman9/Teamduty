@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1ccf68d0be5e4b01950627317e55f346" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="MVCModel.Bid" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MVCModel.DisplayBid" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MVCModel.Job" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="MVCModel.Notification" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MVCModel.Member" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MVCModel.Profile" Width="1.5" PointX="2.875" PointY="3.75" />
+        <EntityTypeShape EntityType="MVCModel.Project" Width="1.5" PointX="5.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

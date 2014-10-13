@@ -1,0 +1,19 @@
+ [Display(Name = "Username")]
+          [DataType(DataType.EmailAddress, ErrorMessage = "The e-mail does not valid")]
+          [EmailAddress]
+
+
+ [Display(Name = "Email")]
+         [DataType(DataType.EmailAddress,ErrorMessage="The e-mail does not valid")]
+          [EmailAddress]
+
+  [Display(Name = "Password")]
+         [StringLength(20, MinimumLength = 6,ErrorMessage="The password length must be between 6-20")]
+
+[Compare("Password", ErrorMessage = "The password and confirm password does not match!")]
+        [Required(ErrorMessage = "Password must not empty")]
+       [Display(Name = "ConfirmPassword")]
+
+
+//
+   [RegularExpression("^([a-z,]+)$", ErrorMessage = "allow lower letter and ','")]

@@ -1,0 +1,111 @@
+﻿@model PagedList.IPagedList<MyApplication.Member>
+
+
+@{
+    ViewBag.Title = "ShowFreelancer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowFreelancer</h2>
+
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.UserId)*@
+            Image
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Email)*@
+            Name
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Username)*@
+            Email
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.UserType)*@
+            UserType
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                <img src="@Url.Action("GetImage", "Profile", new { ProId = @item.UserId })" width="75" height="75" />
+
+                @*@Html.DisplayFor(modelItem => item.UserId)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserType)
+            </td>
+            <td>
+
+                <button class="btn btn-primary btn-warning">
+                    
+                    @Html.ActionLink("see profile", "ShowProfiles", new { id = item.UserId })
+                </button>
+
+                
+            </td>
+
+        </tr>
+
+    }
+
+    @*@{Html.RenderAction("PostJobX", "Job");}*@
+
+</table>
+<div>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</div>
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+
+
+
+
+
+
+
+    @if (Model.HasPreviousPage)
+    {
+
+
+        @Html.ActionLink("<<", "ShowFreelancer", new { page = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw(" ");
+        @Html.ActionLink("< Prev", "ShowFreelancer", new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw(" ");
+        @:< Prev
+    }X
+
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "ShowFreelancer", new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw(" ");
+        @Html.ActionLink(">>", "ShowFreelancer", new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw(" ")
+        @:>>
+    }
+</div>

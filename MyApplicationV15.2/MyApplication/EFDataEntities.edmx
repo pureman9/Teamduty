@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bid">
+          <Key>
+            <PropertyRef Name="BidId" />
+          </Key>
+          <Property Name="BidId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployerId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="DisplayBid">
+          <Key>
+            <PropertyRef Name="DispBidId" />
+          </Key>
+          <Property Name="DispBidId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployerId" Type="int" Nullable="false" />
+          <Property Name="BidId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="Detail" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Budget" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="30" />
+          <Property Name="Description" Type="nvarchar" MaxLength="800" Nullable="false" />
+          <Property Name="InitialBudget" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="finalBudget" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="Java" Type="bit" Nullable="false" />
+          <Property Name="Javascript" Type="bit" Nullable="false" />
+          <Property Name="C" Type="bit" Nullable="false" />
+          <Property Name="Csharp" Type="bit" Nullable="false" />
+          <Property Name="Cplus" Type="bit" Nullable="false" />
+          <Property Name="PHP" Type="bit" Nullable="false" />
+          <Property Name="Objective-C" Type="bit" Nullable="false" />
+          <Property Name="Python" Type="bit" Nullable="false" />
+          <Property Name="ASP.NET" Type="bit" Nullable="false" />
+          <Property Name="Ruby" Type="bit" Nullable="false" />
+          <Property Name="SQL" Type="bit" Nullable="false" />
+          <Property Name="Html" Type="bit" Nullable="false" />
+          <Property Name="Css" Type="bit" Nullable="false" />
+          <Property Name="Android" Type="bit" Nullable="false" />
+          <Property Name="XML" Type="bit" Nullable="false" />
+          <Property Name="Category" Type="nchar" MaxLength="25" />
+          <Property Name="Other" Type="nchar" MaxLength="100" />
+          <Property Name="Date" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Request" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="20" />
+          <Property Name="Email" Type="nchar" MaxLength="100" />
+          <Property Name="Password" Type="nchar" MaxLength="20" />
+          <Property Name="ConfirmPassword" Type="nchar" MaxLength="20" />
+          <Property Name="RegisterCode" Type="nchar" MaxLength="10" />
+          <Property Name="ConfirmRegisterCode" Type="nchar" MaxLength="10" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="UserType" Type="nchar" MaxLength="20" />
+          <Property Name="Credit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotiId" />
+          </Key>
+          <Property Name="NotiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="EmployerId" Type="int" Nullable="false" />
+          <Property Name="FreelancerId" Type="int" Nullable="false" />
+          <Property Name="EmployerMsg" Type="nchar" MaxLength="100" />
+          <Property Name="FreelancerMsg" Type="nchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Read" Type="bit" Nullable="false" />
+          <Property Name="Date" Type="nchar" MaxLength="20" />
+          <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ProId" />
+          </Key>
+          <Property Name="ProId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="UserType" Type="nchar" MaxLength="20" />
+          <Property Name="CompanyName" Type="nchar" MaxLength="30" />
+          <Property Name="About_Yourself" Type="nchar" MaxLength="200" />
+          <Property Name="Address" Type="nchar" MaxLength="200" />
+          <Property Name="Telephone" Type="nchar" MaxLength="10" />
+          <Property Name="Fax" Type="nchar" MaxLength="10" />
+          <Property Name="Status" Type="nchar" MaxLength="30" />
+          <Property Name="HideText" Type="nchar" MaxLength="10" />
+          <Property Name="PicName" Type="nchar" MaxLength="50" />
+          <Property Name="ImageData" Type="varbinary(max)" />
+          <Property Name="ImageMimeType" Type="varchar" MaxLength="50" />
+          <Property Name="Java" Type="bit" Nullable="false" />
+          <Property Name="Javascript" Type="bit" Nullable="false" />
+          <Property Name="C" Type="bit" Nullable="false" />
+          <Property Name="Csharp" Type="bit" Nullable="false" />
+          <Property Name="Cplus" Type="bit" Nullable="false" />
+          <Property Name="PHP" Type="bit" Nullable="false" />
+          <Property Name="Objective-C" Type="bit" Nullable="false" />
+          <Property Name="Python" Type="bit" Nullable="false" />
+          <Property Name="ASP.NET" Type="bit" Nullable="false" />
+          <Property Name="Ruby" Type="bit" Nullable="false" />
+          <Property Name="SQL" Type="bit" Nullable="false" />
+          <Property Name="Html" Type="bit" Nullable="false" />
+          <Property Name="Css" Type="bit" Nullable="false" />
+          <Property Name="Android" Type="bit" Nullable="false" />
+          <Property Name="XML" Type="bit" Nullable="false" />
+          <Property Name="Others" Type="nchar" MaxLength="150" />
+          <Property Name="WebDeveloper" Type="bit" Nullable="false" />
+          <Property Name="Tester" Type="bit" Nullable="false" />
+          <Property Name="MobileDeveloper" Type="bit" Nullable="false" />
+          <Property Name="SystemDesign" Type="bit" Nullable="false" />
+          <Property Name="SystemAnalyst" Type="bit" Nullable="false" />
+          <Property Name="ProjectManager" Type="bit" Nullable="false" />
+          <Property Name="GameDeveloper" Type="bit" Nullable="false" />
+          <Property Name="Marketing" Type="bit" Nullable="false" />
+          <Property Name="OthersJob" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="EmployerId" Type="int" Nullable="false" />
+          <Property Name="FreelancerId" Type="int" Nullable="false" />
+          <Property Name="EmployerName" Type="nchar" MaxLength="50" />
+          <Property Name="FreelancerName" Type="nchar" MaxLength="50" />
+          <Property Name="CheckConfirm" Type="bit" Nullable="false" />
+          <Property Name="Path" Type="int" />
+        </EntityType>
+        <EntityContainer Name="MVCModelStoreContainer">
+          <EntitySet Name="Bid" EntityType="Self.Bid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisplayBid" EntityType="Self.DisplayBid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bids" EntityType="MVCModel.Bid" />
+          <EntitySet Name="DisplayBids" EntityType="MVCModel.DisplayBid" />
+          <EntitySet Name="Jobs" EntityType="MVCModel.Job" />
+          <EntitySet Name="Notifications" EntityType="MVCModel.Notification" />
+          <EntitySet Name="Members" EntityType="MVCModel.Member" />
+          <EntitySet Name="Profiles" EntityType="MVCModel.Profile" />
+          <EntitySet Name="Projects" EntityType="MVCModel.Project" />
+        </EntityContainer>
+        <EntityType Name="Bid">
+          <Key>
+            <PropertyRef Name="BidId" />
+          </Key>
+          <Property Name="BidId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="EmployerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DisplayBid">
+          <Key>
+            <PropertyRef Name="DispBidId" />
+          </Key>
+          <Property Name="DispBidId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BidId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="Detail" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Budget" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="EmployerId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="800" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InitialBudget" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="finalBudget" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="Java" Type="Boolean" Nullable="false" />
+          <Property Name="Javascript" Type="Boolean" Nullable="false" />
+          <Property Name="C" Type="Boolean" Nullable="false" />
+          <Property Name="Csharp" Type="Boolean" Nullable="false" />
+          <Property Name="Cplus" Type="Boolean" Nullable="false" />
+          <Property Name="PHP" Type="Boolean" Nullable="false" />
+          <Property Name="Objective_C" Type="Boolean" Nullable="false" />
+          <Property Name="Python" Type="Boolean" Nullable="false" />
+          <Property Name="ASP_NET" Type="Boolean" Nullable="false" />
+          <Property Name="Ruby" Type="Boolean" Nullable="false" />
+          <Property Name="SQL" Type="Boolean" Nullable="false" />
+          <Property Name="Html" Type="Boolean" Nullable="false" />
+          <Property Name="Css" Type="Boolean" Nullable="false" />
+          <Property Name="Android" Type="Boolean" Nullable="false" />
+          <Property Name="XML" Type="Boolean" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="Other" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Request" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotiId" />
+          </Key>
+          <Property Name="NotiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployerId" Type="Int32" Nullable="false" />
+          <Property Name="FreelancerId" Type="Int32" Nullable="false" />
+          <Property Name="EmployerMsg" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="FreelancerMsg" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Read" Type="Boolean" Nullable="false" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="RegisterCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ConfirmRegisterCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Credit" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ProId" />
+          </Key>
+          <Property Name="ProId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="About_Yourself" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="HideText" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PicName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageMimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Java" Type="Boolean" Nullable="false" />
+          <Property Name="Javascript" Type="Boolean" Nullable="false" />
+          <Property Name="C" Type="Boolean" Nullable="false" />
+          <Property Name="Csharp" Type="Boolean" Nullable="false" />
+          <Property Name="Cplus" Type="Boolean" Nullable="false" />
+          <Property Name="PHP" Type="Boolean" Nullable="false" />
+          <Property Name="Objective_C" Type="Boolean" Nullable="false" />
+          <Property Name="Python" Type="Boolean" Nullable="false" />
+          <Property Name="ASP_NET" Type="Boolean" Nullable="false" />
+          <Property Name="Ruby" Type="Boolean" Nullable="false" />
+          <Property Name="SQL" Type="Boolean" Nullable="false" />
+          <Property Name="Html" Type="Boolean" Nullable="false" />
+          <Property Name="Css" Type="Boolean" Nullable="false" />
+          <Property Name="Android" Type="Boolean" Nullable="false" />
+          <Property Name="XML" Type="Boolean" Nullable="false" />
+          <Property Name="Others" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="WebDeveloper" Type="Boolean" Nullable="false" />
+          <Property Name="Tester" Type="Boolean" Nullable="false" />
+          <Property Name="MobileDeveloper" Type="Boolean" Nullable="false" />
+          <Property Name="SystemDesign" Type="Boolean" Nullable="false" />
+          <Property Name="SystemAnalyst" Type="Boolean" Nullable="false" />
+          <Property Name="ProjectManager" Type="Boolean" Nullable="false" />
+          <Property Name="GameDeveloper" Type="Boolean" Nullable="false" />
+          <Property Name="Marketing" Type="Boolean" Nullable="false" />
+          <Property Name="OthersJob" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployerId" Type="Int32" Nullable="false" />
+          <Property Name="FreelancerId" Type="Int32" Nullable="false" />
+          <Property Name="EmployerName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="FreelancerName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="CheckConfirm" Type="Boolean" Nullable="false" />
+          <Property Name="Path" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MVCModelStoreContainer" CdmEntityContainer="MVCEntities">
+          <EntitySetMapping Name="Bids">
+            <EntityTypeMapping TypeName="MVCModel.Bid">
+              <MappingFragment StoreEntitySet="Bid">
+                <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BidId" ColumnName="BidId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisplayBids">
+            <EntityTypeMapping TypeName="MVCModel.DisplayBid">
+              <MappingFragment StoreEntitySet="DisplayBid">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BidId" ColumnName="BidId" />
+                <ScalarProperty Name="DispBidId" ColumnName="DispBidId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="MVCModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="Request" ColumnName="Request" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="XML" ColumnName="XML" />
+                <ScalarProperty Name="Android" ColumnName="Android" />
+                <ScalarProperty Name="Css" ColumnName="Css" />
+                <ScalarProperty Name="Html" ColumnName="Html" />
+                <ScalarProperty Name="SQL" ColumnName="SQL" />
+                <ScalarProperty Name="Ruby" ColumnName="Ruby" />
+                <ScalarProperty Name="ASP_NET" ColumnName="ASP.NET" />
+                <ScalarProperty Name="Python" ColumnName="Python" />
+                <ScalarProperty Name="Objective_C" ColumnName="Objective-C" />
+                <ScalarProperty Name="PHP" ColumnName="PHP" />
+                <ScalarProperty Name="Cplus" ColumnName="Cplus" />
+                <ScalarProperty Name="Csharp" ColumnName="Csharp" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="Javascript" ColumnName="Javascript" />
+                <ScalarProperty Name="Java" ColumnName="Java" />
+                <ScalarProperty Name="finalBudget" ColumnName="finalBudget" />
+                <ScalarProperty Name="InitialBudget" ColumnName="InitialBudget" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="MVCModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FreelancerMsg" ColumnName="FreelancerMsg" />
+                <ScalarProperty Name="EmployerMsg" ColumnName="EmployerMsg" />
+                <ScalarProperty Name="FreelancerId" ColumnName="FreelancerId" />
+                <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+                <ScalarProperty Name="NotiId" ColumnName="NotiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="MVCModel.Member">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ConfirmRegisterCode" ColumnName="ConfirmRegisterCode" />
+                <ScalarProperty Name="RegisterCode" ColumnName="RegisterCode" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="MVCModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="OthersJob" ColumnName="OthersJob" />
+                <ScalarProperty Name="Marketing" ColumnName="Marketing" />
+                <ScalarProperty Name="GameDeveloper" ColumnName="GameDeveloper" />
+                <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+                <ScalarProperty Name="SystemAnalyst" ColumnName="SystemAnalyst" />
+                <ScalarProperty Name="SystemDesign" ColumnName="SystemDesign" />
+                <ScalarProperty Name="MobileDeveloper" ColumnName="MobileDeveloper" />
+                <ScalarProperty Name="Tester" ColumnName="Tester" />
+                <ScalarProperty Name="WebDeveloper" ColumnName="WebDeveloper" />
+                <ScalarProperty Name="Others" ColumnName="Others" />
+                <ScalarProperty Name="XML" ColumnName="XML" />
+                <ScalarProperty Name="Android" ColumnName="Android" />
+                <ScalarProperty Name="Css" ColumnName="Css" />
+                <ScalarProperty Name="Html" ColumnName="Html" />
+                <ScalarProperty Name="SQL" ColumnName="SQL" />
+                <ScalarProperty Name="Ruby" ColumnName="Ruby" />
+                <ScalarProperty Name="ASP_NET" ColumnName="ASP.NET" />
+                <ScalarProperty Name="Python" ColumnName="Python" />
+                <ScalarProperty Name="Objective_C" ColumnName="Objective-C" />
+                <ScalarProperty Name="PHP" ColumnName="PHP" />
+                <ScalarProperty Name="Cplus" ColumnName="Cplus" />
+                <ScalarProperty Name="Csharp" ColumnName="Csharp" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="Javascript" ColumnName="Javascript" />
+                <ScalarProperty Name="Java" ColumnName="Java" />
+                <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="PicName" ColumnName="PicName" />
+                <ScalarProperty Name="HideText" ColumnName="HideText" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="About_Yourself" ColumnName="About_Yourself" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="MVCModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="CheckConfirm" ColumnName="CheckConfirm" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="FreelancerName" ColumnName="FreelancerName" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="FreelancerId" ColumnName="FreelancerId" />
+                <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<MyApplication.Job>
+
+@{
+    ViewBag.Title = "ShowJob";
+}
+
+
+
+<script>
+    function myFunction(freeId, jobId) {
+
+
+
+        var answer = confirm("Do you want to request this freelancer?")
+        if (answer) {
+            var postData = { freeId: freeId, jobId: jobId };
+            $.ajax({
+                url: '@Url.Action("showJobRequest", "Job")',
+                type: 'Post',
+                dataType: 'json',
+                // we set cache: false because GET requests are often cached by browsers
+                // IE is particularly aggressive in that respect
+                cache: false,
+
+                data: postData,
+                success: function () {
+                    alert("send request already.")
+                   // window.location = "http://www.google.co.th"
+
+                }
+            });
+
+        }
+
+    }
+</script>
+
+
+
+<h2>Select job </h2>
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.InitialBudget)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.finalBudget)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+               
+            </th>
+            Select Job
+            <th>
+               
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Request)
+            </th>*@
+           
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date, "Time   : " + "ShortDateTime")
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitialBudget)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.finalBudget)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Select Job", "GotoShowDetailCategoryJob", new { jid = item.JobId })*@
+                    <button type="submit" onclick="myFunction(@ViewBag.FreelanceId,@item.JobId)">OK</button>
+
+                </td>
+                <td>
+                    @Html.ActionLink("See more", "GotoShowDetailCategoryJob", new { jid = item.JobId })
+
+
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Request)
+
+                </td>*@
+
+            </tr>
+        }
+
+    </table>
+   
+

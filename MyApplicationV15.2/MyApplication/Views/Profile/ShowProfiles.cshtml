@@ -1,0 +1,303 @@
+﻿
+@model MyApplication.Profile
+
+@{
+    ViewBag.Title = "ShowProfiles";
+}
+
+<html>
+<head>
+    <title>Freelancer Profile</title>
+</head>
+<body>
+    <div id="todo" style="margin: 20px; padding-top: 10px" class="droppedHover">
+        <h1 class="letterpress">FreelancerName : @Html.DisplayFor(model => model.Name)</h1>
+        <hr class="" />
+
+        <div class="panel panel-success" style="margin-top: 30px;">
+            <div class="panel-heading">
+                Freelancer Information
+            </div>
+
+            <div class="panel-body">
+                <div id="imageperfil" style="text-align: center;">
+                    <img id="image_preview" alt="your image" src="@Url.Action("GetImage", "Profile", new { ProId = ViewBag.UserId })" width="400" height="400" />
+                </div>
+
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button"  class ="btn btn-warning" style="margin-left:115px;width:385px;">
+                    @Html.ActionLink("Request", "GotoShowjobRequest", new { FreelanceId = ViewBag.UserId })</button>
+                </div>
+              
+
+
+                <dl class="dl-horizontal">
+
+
+
+                    <dt>CompanyName</dt>
+                    <dd>@Html.DisplayFor(model => model.CompanyName)</dd>
+
+                    <dt style="height: 40px;">
+                        <br />About Freelancer
+                    </dt>
+                    <dd>
+                        <br />@Html.DisplayFor(model => model.About_Yourself)<br>
+                    </dd>
+
+
+
+                    <dt style="height: 40px;">
+                        <br />@Html.LabelFor(model => model.Address)
+                    </dt>
+                    <dd>
+                        <br />@Html.DisplayFor(model => model.Address)<br>
+                    </dd>
+
+                    <dt style="height: 40px;">
+                        <br />@Html.LabelFor(model => model.Telephone)
+                    </dt>
+                    <dd>
+                        <br />@Html.DisplayFor(model => model.Telephone)<br>
+                    </dd>
+
+                    <dt style="height: 40px;">
+                        <br />@Html.LabelFor(model => model.Fax)
+                    </dt>
+                    <dd>
+                        <br />@Html.DisplayFor(model => model.Fax)<br>
+                    </dd>
+
+                    <dt style="height: 40px;">
+                        <br />
+                        Skill required
+                    </dt>
+                    <dd>
+                        <br />
+                        <table class="table-bordered">
+
+                            <tr>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Java)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Java)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Java)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Javascript)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Javascript)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Javascript)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.C)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.C)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.C)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Csharp)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Csharp)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Csharp)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Cplus)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Cplus)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Cplus)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.PHP)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.PHP)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.PHP)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Objective_C)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Objective_C)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Objective_C)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Python)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Python)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Python)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.ASP_NET)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.ASP_NET)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.ASP_NET)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Ruby) &nbsp;
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Ruby)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Ruby)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.SQL) &nbsp;
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.SQL)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.SQL)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Html) &nbsp;&nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Html)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Html)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Css) &nbsp;&nbsp;
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Css)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Css)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Android) &nbsp;&nbsp;
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Android)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Android)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.XML)  &nbsp;
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.XML)&nbsp; &nbsp; &nbsp; &nbsp;
+
+                                </td>
+                            </tr>
+
+                        </table>
+                    </dd>
+
+                    <dt style="height: 40px;">
+                        <br />Other Skill Required
+                    </dt>
+                    <dd>
+                        <br />@Html.DisplayFor(model => model.Others)<br>
+                    </dd>
+
+
+                    <dt style="height: 40px;">
+                        <br />
+                        Job Category
+                    </dt>
+                    <dd>
+                        <br />
+                        <table class="table-bordered">
+
+                            <tr>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.WebDeveloper)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.WebDeveloper)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.WebDeveloper)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Tester)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Tester)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Tester)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.MobileDeveloper)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.MobileDeveloper)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.MobileDeveloper)
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.SystemDesign)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.SystemDesign)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.SystemDesign)
+                                </td>
+
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.SystemAnalyst)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.SystemAnalyst)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.SystemAnalyst)
+                                </td>
+
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.ProjectManager)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.ProjectManager)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.ProjectManager)
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.GameDeveloper)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.GameDeveloper)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.GameDeveloper)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.Marketing)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.Marketing)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Marketing)
+                                </td>
+
+                                <td style="text-align: center;">
+                                    @Html.DisplayNameFor(model => model.OthersJob)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.DisplayFor(model => model.OthersJob)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.OthersJob)
+                                </td>
+                            </tr>
+                        </table>
+                    </dd>
+                    
+                  
+                </dl>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</div>

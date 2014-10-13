@@ -1,0 +1,104 @@
+﻿@model IEnumerable<MyApplication.Notification>
+
+@{
+    ViewBag.Title = "FreeNotifications";
+}
+
+<h2>Your Notifications</h2>
+
+ 
+@if (ViewBag.Type == "skill") { 
+    @:Skill
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NotiId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployerMsg)
+        </th>
+
+        <th>Read</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotiId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+               
+                @Html.DisplayFor(modelItem => item.EmployerMsg)
+                @Html.ActionLink("Enter", "GotoShowDetailCategoryJob", new { jid = item.JobId, uid = item.FreelancerId, date = item.Date, type = item.Type })
+
+
+
+
+               @*@Html.ActionLink(item.EmployerMsg, "GotoShowDetailCategoryJob", new { jid = item.JobId, uid = item.FreelancerId, date = item.Date ,type = item.Type})*@
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Read)
+            </td>
+        </tr>
+    }
+
+
+
+</table>
+}
+@*@if (ViewBag.TypeJob == "job")
+{ @:Job
+    <table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NotiId)
+        </th>     
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>   
+        <th>
+            @Html.DisplayNameFor(model => model.EmployerMsg)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+   
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NotiId)
+        </td>    
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td> 
+        <td>
+            @Html.ActionLink("GotoShowDetailCategoryJob", "GotoShowDetailCategoryJob", new { jid = item.JobId, uid = item.FreelancerId, date = item.Date }) ||
+
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Read)
+        </td>   
+    </tr>
+    }
+</table>
+}*@
+    

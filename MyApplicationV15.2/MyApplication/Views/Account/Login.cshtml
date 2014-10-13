@@ -1,0 +1,53 @@
+﻿<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="~/Content/Logincss.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+</head>
+
+@model MyApplication.Member
+
+
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+
+
+        <div class='login'>
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <h2>Login</h2>
+            <br>
+
+            <br>
+
+            @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Username" })
+            @Html.ValidationMessageFor(model => model.Username)
+            <br>
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })
+            @Html.ValidationMessageFor(model => model.Password)
+            <br>
+            <br>
+
+
+
+            <input type="submit" class="animated" value="Sign In">
+
+            <a class='forgot' href='/Account/forgetPassword'>Are you Forget Password?</a>
+
+
+        </div>
+    }
+
+ 

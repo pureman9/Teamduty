@@ -1,0 +1,64 @@
+﻿
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Register</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="~/Content/Createcss.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+
+    @model MyApplication.Member
+    @{
+        ViewBag.Title = "Create";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+    @using (@Html.BeginForm())
+    {
+
+       
+        <div class='login'>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <h2>Register</h2>
+            <br>
+             Select type<br/>
+            @Html.DropDownListFor(x => x.UserType, new[]{
+            new SelectListItem(){Text="Employer",Value="Employer"},
+            new SelectListItem(){Text="Freelancer",Value="Freelancer"}
+        })
+            @ViewBag.NumIterations
+            <br>
+            <br>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Username" })
+            @Html.ValidationMessageFor(model => model.Email)
+            <br>
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })
+            @Html.ValidationMessageFor(model => model.Password)
+            <br>
+            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", placeholder = "ConfirmPassword" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            <br>
+            <br>
+            @Html.HiddenFor(model => model.RegisterCode)
+            @Html.HiddenFor(model => model.Name)
+
+
+            <input type="submit" value="Register">
+
+            <a class='forgot' href='/Account/Login'>Already have an account?</a>
+
+
+        </div>
+    }
+

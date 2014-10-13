@@ -1,0 +1,255 @@
+﻿<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PostJob</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="~/Content/Profilecss.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+@model MyApplication.Job
+
+@{
+    ViewBag.Title = "PostJob";
+}
+
+
+
+    @using (Html.BeginForm())
+    {
+        <h2>Post Your Project</h2>
+        <br>
+        <form class="form-horizontal" role="form">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "Your Project Title" })
+                    @Html.ValidationMessageFor(model => model.Title)
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Your Description" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">InitialBudget</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.InitialBudget, new { @class = "form-control", placeholder = "InitialBudget Required" })
+                    @Html.ValidationMessageFor(model => model.InitialBudget)
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">FinalBudget</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.finalBudget, new { @class = "form-control", placeholder = "FinalBudget Required" })
+                    @Html.ValidationMessageFor(model => model.finalBudget)
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Select skill</label>
+                <div class="col-sm-10">
+                    <div class="table-responsive">
+                        <table class="table-bordered">
+
+                            <tr>
+                                <td style="text-align:center;">1
+                                    @Html.LabelFor(model => model.Java)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Java)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Java)
+                                </td>
+                                <td style="text-align:center;">2
+                                    @Html.LabelFor(model => model.Javascript)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Javascript)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Javascript)
+                                </td>
+                                <td style="text-align:center;">3
+                                    @Html.LabelFor(model => model.C)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.C)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.C)
+                                </td>
+                                <td style="text-align:center;">4
+                                    @Html.LabelFor(model => model.Csharp)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Csharp)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Csharp)
+                                </td>
+                                <td style="text-align:center;">5
+                                    @Html.LabelFor(model => model.Cplus)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Cplus)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Cplus)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align:center;">6
+                                    @Html.LabelFor(model => model.PHP)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.PHP)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.PHP)
+                                </td>
+                                <td style="text-align:center;">7
+                                    @Html.LabelFor(model => model.Objective_C)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Objective_C)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Objective_C)
+                                </td>
+                                <td style="text-align:center;">8
+                                    @Html.LabelFor(model => model.Python)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Python)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Python)
+                                </td>
+                                <td style="text-align:center;">9
+                                    @Html.LabelFor(model => model.ASP_NET)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.ASP_NET)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.ASP_NET)
+                                </td>
+                                <td style="text-align:center;">10
+                                    @Html.LabelFor(model => model.Ruby) &nbsp;
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Ruby)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Ruby)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align:center;">11
+                                    @Html.LabelFor(model => model.SQL) &nbsp;
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.SQL)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.SQL)
+                                </td>
+                                <td style="text-align:center;">12
+                                    @Html.LabelFor(model => model.Html) &nbsp;&nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Html)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Html)
+                                </td>
+                                <td style="text-align:center;">13
+                                    @Html.LabelFor(model => model.Css) &nbsp;&nbsp;
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Css)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Css)
+                                </td>
+                                <td style="text-align:center;">14
+                                    @Html.LabelFor(model => model.Android) &nbsp;&nbsp;
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.Android)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.Android)
+                                </td>
+                                <td style="text-align:center;">15
+                                    @Html.LabelFor(model => model.XML)  &nbsp;
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.EditorFor(model => model.XML)&nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ValidationMessageFor(model => model.XML)
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">OtherSkill</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.Other, new { @class = "form-control", placeholder = "Other Skill Required" })
+                    @Html.ValidationMessageFor(model => model.Other)
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="form-group">
+
+                <label for="inputEmail3" class="col-sm-2 control-label">Category</label>
+                <div class="col-sm-10">
+                    <div class="editor-field">
+
+                        @Html.DropDownListFor(x => x.Category, new[]{
+          new SelectListItem(){Text="Web Developer",Value="Web Developer"},
+            new SelectListItem(){Text="Tester",Value="Tester"},
+               new SelectListItem(){Text="Mobile Devolpoer",Value="Mobile Devolpoer"},
+                  new SelectListItem(){Text="System & Graphic design",Value="System & Graphic design"},
+                     new SelectListItem(){Text="System Analyst",Value="System Analyst"},
+                        new SelectListItem(){Text="Project Manager",Value="Project Manager"},
+                           new SelectListItem(){Text="Game Developer",Value="Game Developer"},
+                              new SelectListItem(){Text="Marketing",Value="Marketing"},
+                                new SelectListItem(){Text="Others",Value="Others"}
+        })
+                        @Html.ValidationMessageFor(model => model.Category)
+                    </div>
+                    <!--editfield -->
+                </div>
+                <!-- sm10 -->
+            </div>
+            <!-- Form group -->
+
+
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <p>
+                        <br>
+                        <br>
+                        <input type="submit" value="Post Your Job" />
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                @Html.ActionLink("Back to Home", "Index", "Home")
+            </div>
+        </form>
+    }
+

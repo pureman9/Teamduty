@@ -1,0 +1,121 @@
+﻿@model IEnumerable<MyApplication.Project>
+
+@{
+    ViewBag.Title = "progressOftheProject";
+}
+
+<h2>progressOftheProject</h2>
+<script type="text/javascript">
+    function CreateFolder(jid) {
+ 
+            var postData = { jid: jid };
+            $.ajax({
+                url: '@Url.Action("Test", "Project")',
+                type: 'POST',
+                dataType: 'json',
+
+                cache: false,
+                data: postData
+
+            })
+        
+
+    }
+    function CallFolder(jid) {
+
+        var postData = { jid: jid };
+        $.ajax({
+            url: '@Url.Action("CallFile", "Project")',
+            type: 'POST',
+            dataType: 'json',
+
+            cache: false,
+            data: postData
+
+        })
+       
+    }
+
+    function Downloads(check) {
+
+        var postData = { check: check };
+        $.ajax({
+            url: '@Url.Action("Downloads", "Project")',
+            type: 'POST',
+            dataType: 'json',
+
+            cache: false,
+            data: postData
+
+        })
+
+
+    }
+        </script>
+
+
+ 
+
+    <b>
+        @Html.DisplayNameFor(model => model.JobId)
+    </b><br />
+
+        @ViewBag.JobId <br/>
+        <b>@Html.DisplayNameFor(model => model.EmployerName)</b><br />
+        @ViewBag.EmployerName
+
+        <table>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.FreelancerName)
+                </th>
+
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+        {
+            <tr>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FreelancerName)
+                    </td>
+
+
+
+                </tr>
+        }
+
+        </table>
+
+
+     <button class="btn btn-primary btn-warning" type="button" onclick="CreateFolder(@ViewBag.JobId)">CreateFolder</button>
+
+<button class="btn btn-primary btn-warning" type="button" onclick="CallFolder(@ViewBag.JobId)">CallFolder</button>
+
+@foreach(var image in (IEnumerable<string>)ViewBag.Images)
+{
+    <img src="@Url.Content(image)" alt="Hejsan" width="150" height="150" />
+}
+/////////////////////////////////////////////////////////////////////////////
+@using (Html.BeginForm("Uploads", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{  <label for="file1">Filename:</label>
+    <input type="file" name="files" id="file1" />
+
+    <label for="file2">Filename:</label>
+    <input type="file" name="files" id="file2" />
+
+    <input type="submit" />
+}
+//////////////////////////////////////////////////
+
+
+  <button class="btn btn-primary btn-warning" type="button" onclick="Downloads(true)">Download</button>
+@if(!ViewBag.check) { 
+<div class="panel-body">
+    @{Html.RenderAction("Index", "Reports");}
+</div>
+}

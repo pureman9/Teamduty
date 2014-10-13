@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MVCModelStoreContainer" CdmEntityContainer="MVCEntities">
+    <EntitySetMapping Name="Bids">
+      <EntityTypeMapping TypeName="MVCModel.Bid">
+        <MappingFragment StoreEntitySet="Bid">
+          <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BidId" ColumnName="BidId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DisplayBids">
+      <EntityTypeMapping TypeName="MVCModel.DisplayBid">
+        <MappingFragment StoreEntitySet="DisplayBid">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+          <ScalarProperty Name="Budget" ColumnName="Budget" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BidId" ColumnName="BidId" />
+          <ScalarProperty Name="DispBidId" ColumnName="DispBidId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="MVCModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="Request" ColumnName="Request" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="XML" ColumnName="XML" />
+          <ScalarProperty Name="Android" ColumnName="Android" />
+          <ScalarProperty Name="Css" ColumnName="Css" />
+          <ScalarProperty Name="Html" ColumnName="Html" />
+          <ScalarProperty Name="SQL" ColumnName="SQL" />
+          <ScalarProperty Name="Ruby" ColumnName="Ruby" />
+          <ScalarProperty Name="ASP_NET" ColumnName="ASP.NET" />
+          <ScalarProperty Name="Python" ColumnName="Python" />
+          <ScalarProperty Name="Objective_C" ColumnName="Objective-C" />
+          <ScalarProperty Name="PHP" ColumnName="PHP" />
+          <ScalarProperty Name="Cplus" ColumnName="Cplus" />
+          <ScalarProperty Name="Csharp" ColumnName="Csharp" />
+          <ScalarProperty Name="C" ColumnName="C" />
+          <ScalarProperty Name="Javascript" ColumnName="Javascript" />
+          <ScalarProperty Name="Java" ColumnName="Java" />
+          <ScalarProperty Name="finalBudget" ColumnName="finalBudget" />
+          <ScalarProperty Name="InitialBudget" ColumnName="InitialBudget" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="MVCModel.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Read" ColumnName="Read" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FreelancerMsg" ColumnName="FreelancerMsg" />
+          <ScalarProperty Name="EmployerMsg" ColumnName="EmployerMsg" />
+          <ScalarProperty Name="FreelancerId" ColumnName="FreelancerId" />
+          <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+          <ScalarProperty Name="NotiId" ColumnName="NotiId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="MVCModel.Member">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ConfirmRegisterCode" ColumnName="ConfirmRegisterCode" />
+          <ScalarProperty Name="RegisterCode" ColumnName="RegisterCode" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="MVCModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="OthersJob" ColumnName="OthersJob" />
+          <ScalarProperty Name="Marketing" ColumnName="Marketing" />
+          <ScalarProperty Name="GameDeveloper" ColumnName="GameDeveloper" />
+          <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+          <ScalarProperty Name="SystemAnalyst" ColumnName="SystemAnalyst" />
+          <ScalarProperty Name="SystemDesign" ColumnName="SystemDesign" />
+          <ScalarProperty Name="MobileDeveloper" ColumnName="MobileDeveloper" />
+          <ScalarProperty Name="Tester" ColumnName="Tester" />
+          <ScalarProperty Name="WebDeveloper" ColumnName="WebDeveloper" />
+          <ScalarProperty Name="Others" ColumnName="Others" />
+          <ScalarProperty Name="XML" ColumnName="XML" />
+          <ScalarProperty Name="Android" ColumnName="Android" />
+          <ScalarProperty Name="Css" ColumnName="Css" />
+          <ScalarProperty Name="Html" ColumnName="Html" />
+          <ScalarProperty Name="SQL" ColumnName="SQL" />
+          <ScalarProperty Name="Ruby" ColumnName="Ruby" />
+          <ScalarProperty Name="ASP_NET" ColumnName="ASP.NET" />
+          <ScalarProperty Name="Python" ColumnName="Python" />
+          <ScalarProperty Name="Objective_C" ColumnName="Objective-C" />
+          <ScalarProperty Name="PHP" ColumnName="PHP" />
+          <ScalarProperty Name="Cplus" ColumnName="Cplus" />
+          <ScalarProperty Name="Csharp" ColumnName="Csharp" />
+          <ScalarProperty Name="C" ColumnName="C" />
+          <ScalarProperty Name="Javascript" ColumnName="Javascript" />
+          <ScalarProperty Name="Java" ColumnName="Java" />
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+          <ScalarProperty Name="PicName" ColumnName="PicName" />
+          <ScalarProperty Name="HideText" ColumnName="HideText" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="About_Yourself" ColumnName="About_Yourself" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProId" ColumnName="ProId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="MVCModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="CheckConfirm" ColumnName="CheckConfirm" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="FreelancerName" ColumnName="FreelancerName" />
+          <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+          <ScalarProperty Name="FreelancerId" ColumnName="FreelancerId" />
+          <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

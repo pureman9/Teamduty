@@ -1,0 +1,116 @@
+﻿@model IEnumerable<MyApplication.DisplayBid>
+
+@{
+    Layout = null;
+}
+
+<script>
+    function myFunction(uid, EmployerId, jobId) {
+   
+        var answer = confirm("Do you want to request this freelancer?")
+        if (answer) {
+            var postData = { uid: uid, EmployerId: EmployerId, jobId: jobId };
+            $.ajax({
+                url: '@Url.Action("FreeNotificationJob", "Notification")',
+                type: 'GET',
+                dataType: 'json',
+                // we set cache: false because GET requests are often cached by browsers
+                // IE is particularly aggressive in that respect
+                cache: false,
+
+                data: postData,
+                success: function () {
+                    alert("send request already.")
+                    window.location = "http://localhost:3883/DisplayJob/ShowDetailCategoryJob?jid=" + ViewBag.JobId
+
+                }
+            });
+
+        }
+        else {
+            window.location = "http://localhost:3883/DisplayJob/ShowDetailCategoryJob?jid=" + ViewBag.JobId
+        }
+    }
+</script>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>showBiddingList</title>
+</head>
+<body>
+    <h1>
+        Bidding Lists
+    </h1>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.BidId)*@
+                Image
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Budget)
+            </th>
+            <th>
+             See Detail
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Action("GetImage", "Profile", new { ProId = @item.UserId })" width="75" height="75" />
+
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.BidId)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Detail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Budget)
+                </td>
+                <td>
+                    @Html.ActionLink("See Profile", "ShowProfilesFromBid", new { id = item.UserId })
+
+                    @*@if (ViewBag.UserType == "Employer            ")
+                        {
+
+                           // <button onclick="myFunction()">Request</button>
+
+                        }*@
+
+                    @if (ViewBag.UserType == "Employer            ")
+                    {
+
+                        // using (Html.BeginForm("Index", "Notification"))
+                        // {
+                        <button class="btn btn-primary btn-warning"type="submit" onclick="myFunction(@item.UserId,@item.EmployerId,@item.JobId)">Request</button>
+                        //  }
+
+                    }
+
+                </td>
+
+            </tr>
+
+        }
+
+    </table>
+</body>
+</html>

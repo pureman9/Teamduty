@@ -1,0 +1,86 @@
+﻿@model IEnumerable<MyApplication.Job>
+
+@{
+    ViewBag.Title = "showProjects";
+}
+
+<h2>showProjects</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<th>
+    <table class="table">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.JobId)*@
+                Id
+            </th>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.Date)*@
+                Date
+            </th>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.Title)*@
+                Job Title
+            </th>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.InitialBudget)*@
+                InitialBudget
+            </th>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.finalBudget)*@
+                finalBudget
+            </th>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.Category)*@
+                Category
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitialBudget)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.finalBudget)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Enter", "progressOftheProject", new { JobId = item.JobId })
+
+                </td>
+
+
+
+            </tr>
+
+        }
+
+    </table>

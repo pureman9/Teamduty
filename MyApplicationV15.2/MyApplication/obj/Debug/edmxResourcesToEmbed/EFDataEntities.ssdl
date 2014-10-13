@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bid">
+    <Key>
+      <PropertyRef Name="BidId" />
+    </Key>
+    <Property Name="BidId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployerId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="DisplayBid">
+    <Key>
+      <PropertyRef Name="DispBidId" />
+    </Key>
+    <Property Name="DispBidId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployerId" Type="int" Nullable="false" />
+    <Property Name="BidId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="Detail" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Budget" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobId" />
+    </Key>
+    <Property Name="JobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nchar" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" MaxLength="800" Nullable="false" />
+    <Property Name="InitialBudget" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="finalBudget" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="Java" Type="bit" Nullable="false" />
+    <Property Name="Javascript" Type="bit" Nullable="false" />
+    <Property Name="C" Type="bit" Nullable="false" />
+    <Property Name="Csharp" Type="bit" Nullable="false" />
+    <Property Name="Cplus" Type="bit" Nullable="false" />
+    <Property Name="PHP" Type="bit" Nullable="false" />
+    <Property Name="Objective-C" Type="bit" Nullable="false" />
+    <Property Name="Python" Type="bit" Nullable="false" />
+    <Property Name="ASP.NET" Type="bit" Nullable="false" />
+    <Property Name="Ruby" Type="bit" Nullable="false" />
+    <Property Name="SQL" Type="bit" Nullable="false" />
+    <Property Name="Html" Type="bit" Nullable="false" />
+    <Property Name="Css" Type="bit" Nullable="false" />
+    <Property Name="Android" Type="bit" Nullable="false" />
+    <Property Name="XML" Type="bit" Nullable="false" />
+    <Property Name="Category" Type="nchar" MaxLength="25" />
+    <Property Name="Other" Type="nchar" MaxLength="100" />
+    <Property Name="Date" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Request" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nchar" MaxLength="20" />
+    <Property Name="Email" Type="nchar" MaxLength="100" />
+    <Property Name="Password" Type="nchar" MaxLength="20" />
+    <Property Name="ConfirmPassword" Type="nchar" MaxLength="20" />
+    <Property Name="RegisterCode" Type="nchar" MaxLength="10" />
+    <Property Name="ConfirmRegisterCode" Type="nchar" MaxLength="10" />
+    <Property Name="Name" Type="nchar" MaxLength="50" />
+    <Property Name="UserType" Type="nchar" MaxLength="20" />
+    <Property Name="Credit" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="NotiId" />
+    </Key>
+    <Property Name="NotiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="EmployerId" Type="int" Nullable="false" />
+    <Property Name="FreelancerId" Type="int" Nullable="false" />
+    <Property Name="EmployerMsg" Type="nchar" MaxLength="100" />
+    <Property Name="FreelancerMsg" Type="nchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Read" Type="bit" Nullable="false" />
+    <Property Name="Date" Type="nchar" MaxLength="20" />
+    <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="ProId" />
+    </Key>
+    <Property Name="ProId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" />
+    <Property Name="UserType" Type="nchar" MaxLength="20" />
+    <Property Name="CompanyName" Type="nchar" MaxLength="30" />
+    <Property Name="About_Yourself" Type="nchar" MaxLength="200" />
+    <Property Name="Address" Type="nchar" MaxLength="200" />
+    <Property Name="Telephone" Type="nchar" MaxLength="10" />
+    <Property Name="Fax" Type="nchar" MaxLength="10" />
+    <Property Name="Status" Type="nchar" MaxLength="30" />
+    <Property Name="HideText" Type="nchar" MaxLength="10" />
+    <Property Name="PicName" Type="nchar" MaxLength="50" />
+    <Property Name="ImageData" Type="varbinary(max)" />
+    <Property Name="ImageMimeType" Type="varchar" MaxLength="50" />
+    <Property Name="Java" Type="bit" Nullable="false" />
+    <Property Name="Javascript" Type="bit" Nullable="false" />
+    <Property Name="C" Type="bit" Nullable="false" />
+    <Property Name="Csharp" Type="bit" Nullable="false" />
+    <Property Name="Cplus" Type="bit" Nullable="false" />
+    <Property Name="PHP" Type="bit" Nullable="false" />
+    <Property Name="Objective-C" Type="bit" Nullable="false" />
+    <Property Name="Python" Type="bit" Nullable="false" />
+    <Property Name="ASP.NET" Type="bit" Nullable="false" />
+    <Property Name="Ruby" Type="bit" Nullable="false" />
+    <Property Name="SQL" Type="bit" Nullable="false" />
+    <Property Name="Html" Type="bit" Nullable="false" />
+    <Property Name="Css" Type="bit" Nullable="false" />
+    <Property Name="Android" Type="bit" Nullable="false" />
+    <Property Name="XML" Type="bit" Nullable="false" />
+    <Property Name="Others" Type="nchar" MaxLength="150" />
+    <Property Name="WebDeveloper" Type="bit" Nullable="false" />
+    <Property Name="Tester" Type="bit" Nullable="false" />
+    <Property Name="MobileDeveloper" Type="bit" Nullable="false" />
+    <Property Name="SystemDesign" Type="bit" Nullable="false" />
+    <Property Name="SystemAnalyst" Type="bit" Nullable="false" />
+    <Property Name="ProjectManager" Type="bit" Nullable="false" />
+    <Property Name="GameDeveloper" Type="bit" Nullable="false" />
+    <Property Name="Marketing" Type="bit" Nullable="false" />
+    <Property Name="OthersJob" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+    </Key>
+    <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="EmployerId" Type="int" Nullable="false" />
+    <Property Name="FreelancerId" Type="int" Nullable="false" />
+    <Property Name="EmployerName" Type="nchar" MaxLength="50" />
+    <Property Name="FreelancerName" Type="nchar" MaxLength="50" />
+    <Property Name="CheckConfirm" Type="bit" Nullable="false" />
+    <Property Name="Path" Type="int" />
+  </EntityType>
+  <EntityContainer Name="MVCModelStoreContainer">
+    <EntitySet Name="Bid" EntityType="Self.Bid" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DisplayBid" EntityType="Self.DisplayBid" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

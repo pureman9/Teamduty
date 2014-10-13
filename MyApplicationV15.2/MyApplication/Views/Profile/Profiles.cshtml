@@ -1,0 +1,442 @@
+﻿<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Profile</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="~/Content/Profilecss.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+
+@model MyApplication.Profile
+
+
+@{
+    ViewBag.Title = "Profiles";
+}
+
+
+
+    <h2>Your Profile</h2>
+    <br>
+
+    @if (Session["UserType"].Equals("Employer            "))
+    {
+        using (Html.BeginForm("Profiles", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <form class="form-horizontal" role="form">
+
+                @*UID= @Session["UidInProfile"] and PID= @Session["ProfileId"];*@
+                <br>
+                <br>
+                @*<div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">YourName</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "YourName" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>*@
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">YourCompanyName</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", placeholder = "YourCompanyName" })
+                        @Html.ValidationMessageFor(model => model.CompanyName)
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">About Yourself</label>
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(model => model.About_Yourself, new { @class = "form-control", placeholder = "Input something about yourself" })
+                        @Html.ValidationMessageFor(model => model.About_Yourself)
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control", placeholder = "Address" })
+                        @Html.ValidationMessageFor(model => model.Address)
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Telephone</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Telephone, new { @class = "form-control", placeholder = "Telephone" })
+                        @Html.ValidationMessageFor(model => model.Telephone)
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Input Image</label>
+                    <div style="margin-left: 220px;">
+                        <input type="file" id="exampleInputFile" style="cursor: pointer;" name="file" onchange="readfile(this);">
+                        <br>
+                    </div>
+                    <div style="margin-left: 220px;">
+                        <img id="image_preview" alt="your image" src="@Url.Action("GetImage", "Profile", new { ProId = @Session["UidInProfile"] })" width="150" height="150" />
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Submit" />
+                    </div>
+                </div>
+            </form>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("Profiles", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <form class="form-horizontal" role="form">
+
+                UID= @Session["UidInProfile"] and PID= @Session["ProfileId"];
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">YourName</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "YourName" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">YourCompanyName</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", placeholder = "YourCompanyName" })
+                        @Html.ValidationMessageFor(model => model.CompanyName)
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">About Yourself</label>
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(model => model.About_Yourself, new { @class = "form-control", placeholder = "Input something about yourself" })
+                        @Html.ValidationMessageFor(model => model.About_Yourself)
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control", placeholder = "Address" })
+                        @Html.ValidationMessageFor(model => model.Address)
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Telephone</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Telephone, new { @class = "form-control", placeholder = "Telephone" })
+                        @Html.ValidationMessageFor(model => model.Telephone)
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Select skill</label>
+                    <div class="col-sm-10">
+                        <div class="table-responsive">
+                            <table class="table-bordered">
+
+                                <tr>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Java)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Java)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Java)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Javascript)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Javascript)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Javascript)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.C)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.C)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.C)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Csharp)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Csharp)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Csharp)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Cplus)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Cplus)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Cplus)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.PHP)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.PHP)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.PHP)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Objective_C)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Objective_C)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Objective_C)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Python)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Python)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Python)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.ASP_NET)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.ASP_NET)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.ASP_NET)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Ruby) &nbsp;
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Ruby)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Ruby)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.SQL) &nbsp;
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.SQL)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.SQL)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Html) &nbsp;&nbsp;&nbsp;&nbsp;
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Html)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Html)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Css) &nbsp;&nbsp;
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Css)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Css)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Android) &nbsp;&nbsp;
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Android)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Android)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.XML)  &nbsp;
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.XML)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.XML)
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <br />
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Other Skill</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Others, new { @class = "form-control", placeholder = "Other Skill" })
+                        @Html.ValidationMessageFor(model => model.Others)
+                    </div>
+                </div>
+                <br><br><br><br><br>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Select Category</label>
+                    <div class="col-sm-10">
+                        <div class="table-responsive">
+                            <table class="table-bordered">
+                                
+                                <tr>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.WebDeveloper)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.WebDeveloper)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.WebDeveloper)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Tester)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Tester)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Tester)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.MobileDeveloper)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.MobileDeveloper)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.MobileDeveloper)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.SystemDesign)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.SystemDesign)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.SystemDesign)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.SystemAnalyst)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.SystemAnalyst)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.SystemAnalyst)
+                                    </td>
+                                </tr>
+                                
+                                
+                                
+                                <tr>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.ProjectManager)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.ProjectManager)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.ProjectManager)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.GameDeveloper)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.GameDeveloper)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.GameDeveloper)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.Marketing)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.Marketing)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.Marketing)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.LabelFor(model => model.OthersJob)
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @Html.EditorFor(model => model.OthersJob)&nbsp; &nbsp; &nbsp; &nbsp;
+                                        @Html.ValidationMessageFor(model => model.OthersJob)
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                            <br />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group" style="margin-top:80px;">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Input Image</label>
+                    <div style="margin-left: 190px;">
+                        <input type="file" id="exampleInputFile" style="cursor: pointer;" name="file" onchange="readfile(this);">
+                        <br>
+                    </div>
+                    <div style="margin-left: 190px;">
+                        <img id="image_preview" alt="your image" src="@Url.Action("GetImage", "Profile", new { ProId = @Session["UidInProfile"] })" width="150" height="150" />
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Submit" />
+                    </div>
+                </div>
+            </form>
+
+
+
+
+        }
+    }
+    @**@
+
+
+
+    <script type="text/javascript">
+        function readfile(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image_preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        </script>
+  
+
+
+
+
+
+
+
+
+

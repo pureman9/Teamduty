@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TEAMDUTY - WebAplication</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="~/Content/simple-sidebar.css" rel="stylesheet">
+    <link href="~/Content/Layoutcss.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    
+
+</head>
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Home/Index" style="font-size:28px;">TEAMDUTY</a>
+            </div>
+
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+
+
+                <ul class="nav navbar-nav navbar-right">
+
+
+
+
+
+                    @if (Session["Online"] != null)
+                    {
+                        if (@Session["UserType"].ToString() == "Employer            ")
+                        {
+
+                            <li><img src="@Url.Action("GetImage", "Profile", new { ProId = @Session["UidInProfile"] })" width="50" height="50" /></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello !! @Session["Name"]<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Job/PostJob">Post Job</a></li>
+                                    <li><a href="/Profile/Profiles">Profile </a></li>
+                                    <li><a href="/Job/ShowJob">Your Job</a></li>
+                                    <li><a href="/Project/showProjects">Projects</a></li>
+                                    <li><a href="/Notification/EmNotifications">Notification</a></li>
+                                    <li><a href="/Account/ShowFreelancer">Show Freelancer</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">@Html.ActionLink("Logout", "Logout", "Account")</a></li>
+                                </ul>
+                            </li>
+                        } if (@Session["UserType"].ToString() == "Freelancer          ")
+                        {
+
+                            <li><img src="@Url.Action("GetImage", "Profile", new { ProId = @Session["UidInProfile"] })" width="50" height="50" /></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello !! @Session["Name"]<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Profile/Profiles">Profile Here</a></li>
+                                  @*//  <li><a href="/Job/ShowJob">Show Job</a></li>*@
+                                    <li><a href="/Notification/FreeNotifications">Notification</a></li>
+                                    <li><a href="/Project/showProjects">Projects</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">@Html.ActionLink("Logout", "Logout", "Account")</a></li>
+                                </ul>
+                            </li>
+
+                        }
+                    }
+                    else
+                    {
+
+                        <li>@Html.ActionLink("Register", "Create", "Account")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    }
+
+
+
+
+
+
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+    <!-- /.navbar-top-links -->
+
+    <div class="navbar-default navbar-static-side" role="navigation">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            
+
+            <ul class="sidebar-nav">
+                <li style="background-color:black;color:white;font-size:18px;">Job Category</li>
+               
+               
+                <li>
+                    <a href="#">@Html.ActionLink("Web Developer", "WebDev", "DisplayJob")</a>
+                </li>
+                <li>
+                    <a href="#">@Html.ActionLink("Tester", "Tester", "DisplayJob")</a>
+                </li>
+                <li>
+                    <a href="#">@Html.ActionLink("Mobile Developer", "MobileDev", "DisplayJob")</a>
+                </li>
+                <li>
+                    <a href="#">@Html.ActionLink("System & Graphic design", "SystemDesign", "DisplayJob")</a>
+                </li>
+                <li>
+                    <a href="#">@Html.ActionLink("System Analyst", "SystemAnalyst", "DisplayJob")</a>
+                </li>
+                <li>
+                    <a href="#">@Html.ActionLink("Project Manager", "ProjectManager", "DisplayJob")</a>
+                </li>
+                <li>
+                    <a href="#">@Html.ActionLink("Game Developer", "GameDev", "DisplayJob")</a>
+                </li>
+                <li>
+                    <a href="#">@Html.ActionLink("Marketing", "Marketing", "DisplayJob")</a>
+                </li>
+                <li>
+                    <a href="#">@Html.ActionLink("Others", "Others", "DisplayJob")</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                @RenderBody()
+
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+
+ 
+    </div>
+    <footer>
+        <div class="container">
+            <p style="margin-left:690px;">TEAMDUTY -Webapplication SE - Senior project 2014 <a href="http://www.google.co.th/" rel="author">Contract Us</a></p>
+        </div >
+    </footer>

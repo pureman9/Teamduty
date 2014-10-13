@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MyApplication.Job>
+
+@{
+    ViewBag.Title = "ShowJob";
+}
+
+<h2>Your Jobs</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.InitialBudget)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.finalBudget)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>  </th>
+        <th>  </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date, "Time   : "+"ShortDateTime")
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.InitialBudget)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.finalBudget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.ActionLink("See more", "GotoShowDetailCategoryJob", new { jid = item.JobId }) 
+
+
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteJob", new { id = item.JobId }) 
+
+            </td>
+
+        </tr>
+    }
+
+</table>

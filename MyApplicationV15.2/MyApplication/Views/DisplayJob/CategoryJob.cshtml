@@ -1,0 +1,125 @@
+﻿@model PagedList.IPagedList<MyApplication.Job>
+
+
+@{
+    ViewBag.Title = "ProjectManager";
+}
+
+<h2>@ViewBag.Head</h2>
+@if (Session["Online"] == null)
+{
+    @:Nothing
+}
+
+else { 
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.JobId)*@
+             Id
+        </th>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.Date)*@
+            Date
+        </th>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            Job Title
+        </th>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.InitialBudget)*@
+            InitialBudget
+        </th>
+       
+        <th>
+            @*@Html.DisplayNameFor(model => model.finalBudget)*@
+            finalBudget
+        </th>
+      
+        <th>
+            @*@Html.DisplayNameFor(model => model.Category)*@
+            Category
+        </th>
+        <th>
+            Post by.
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.InitialBudget)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.finalBudget)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @ViewBag.Name 
+            </td>
+            <td>
+                @Html.ActionLink("See more", "ShowDetailCategoryJob", new { jid = item.JobId }) 
+
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+
+
+
+
+
+
+
+    @if (Model.HasPreviousPage)
+    {
+
+
+        @Html.ActionLink("<<", "WebDev", new { page = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw(" ");
+        @Html.ActionLink("< Prev", "WebDev", new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw(" ");
+        @:< Prev
+    } &nbsp;
+
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "WebDev", new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw(" ");
+        @Html.ActionLink(">>", "WebDev", new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw(" ")
+        @:>>
+    }
+</div>
+}
